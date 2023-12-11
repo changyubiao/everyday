@@ -13,6 +13,7 @@ st.set_page_config(
 def callback():
     print("callback begin...")
     cur_t = get_cur_time()
+    print(f"callback begin... {cur_t}")
     return cur_t
 
 

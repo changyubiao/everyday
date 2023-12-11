@@ -1,17 +1,25 @@
 """
 今天是2019年7月1日，星期一，今年的第181天，这一年49.59%的时间已流逝
 """
-
+import os
 from datetime import date, datetime
 from decimal import Decimal, ROUND_HALF_UP
+import pytz
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env
+
+tz_info = os.getenv('TZ', default='Asia/Shanghai')
+
+default_timezone = pytz.timezone(tz_info)
 
 
-def get_cur_time() -> str:
+def get_cur_time(timezone=default_timezone) -> str:
     """
     2023-12-10 20:32:58
     :return:
     """
-    return datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    return datetime.now(timezone).strftime('%Y-%m-%d %H:%M:%S')
 
 
 def everyday_notice():
@@ -44,5 +52,7 @@ def everyday_notice():
 
 
 if __name__ == '__main__':
-    print(everyday_notice())
+    # print(everyday_notice())
+    print(get_cur_time())
+    # print(get_cur_time(eastern))
     pass
