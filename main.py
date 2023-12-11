@@ -1,6 +1,5 @@
 import streamlit as st
-from utils.everyday import everyday_notice, get_cur_time
-
+from utils.everyday import everyday_notice, tz
 
 st.set_page_config(
     page_title="Every Day App",  # 页面标题
@@ -11,15 +10,14 @@ st.set_page_config(
 
 
 def callback():
-    print("callback begin...")
-    cur_t = get_cur_time()
+    cur_t = tz.get_current_dt()
     print(f"callback begin... {cur_t}")
     return cur_t
 
 
 def app(name):
     info = everyday_notice()
-    cur_t = get_cur_time()
+    cur_t = tz.get_current_dt()
     st.header('Every Day App')
     st.write(f"Hi, {name}  \n\n")
     col1, col2 = st.columns(2)
@@ -44,7 +42,7 @@ def app(name):
                 }
             </style>
         
-        """,unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
     with col2:
         st.button("Update Time", on_click=callback)
