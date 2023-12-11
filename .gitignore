@@ -1,4 +1,6 @@
 # Byte-compiled / optimized / DLL files
+.idea/
+deprecated/
 __pycache__/
 *.py[cod]
 *$py.class
@@ -136,3 +138,4 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
