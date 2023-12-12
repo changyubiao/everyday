@@ -10,14 +10,14 @@ st.set_page_config(
 
 
 def callback():
-    cur_t = tz.get_current_dt()
+    cur_t = tz.get_cur_datetime_str()
     print(f"callback begin... {cur_t}")
     return cur_t
 
 
 def app(name):
     info = everyday_notice()
-    cur_t = tz.get_current_dt()
+    cur_t = tz.get_cur_datetime_str()
     st.header('Every Day App')
     st.write(f"Hi, {name}  \n\n")
     col1, col2 = st.columns(2)
