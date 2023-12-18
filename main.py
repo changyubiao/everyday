@@ -1,4 +1,6 @@
 import streamlit as st
+
+from css.style import style_str
 from utils.everyday import everyday_notice, tz
 
 st.set_page_config(
@@ -11,43 +13,28 @@ st.set_page_config(
 
 def callback():
     cur_t = tz.get_cur_datetime_str()
-    print(f"callback begin... {cur_t}")
+    print(f"callback:begin... {cur_t}")
     return cur_t
 
 
 def app(name):
-    info = everyday_notice()
     cur_t = tz.get_cur_datetime_str()
+    print(f"app:cur_time: {cur_t}")
+
+    today = tz.str_to_date(cur_t)
+    info = everyday_notice(today)
     st.header('Every Day App')
     st.write(f"Hi, {name}  \n\n")
     col1, col2 = st.columns(2)
     with col1:
         st.write(f"Now: {cur_t}. \n\n")
-    st.write(
-        """<style>
-                .st-emotion-cache-keje6w  {
-                    width: calc(50% - 1rem);
-                    flex: 1 1 calc(50% - 1rem);
-                    display: flex;
-                    align-items: center;
-                    # border: 1px solid rgba(49, 51, 63, 0.2);
-                    # border-radius: 4px;
-                }
-                
-                /* button 大小 位置 */
-                button.ef3psqc12 {
-                    width : 150px;
-                    /* margin-left: 15px; */
-    
-                }
-            </style>
-        
-        """, unsafe_allow_html=True)
 
     with col2:
         st.button("Update Time", on_click=callback)
 
     st.write(f"{info}")
+
+    st.write(style_str, unsafe_allow_html=True)
 
 
 def run():
