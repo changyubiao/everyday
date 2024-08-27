@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+
+  everyday-service:
+    restart: always
+    container_name: everyday_service #配置容器名
+    image: everyday-service:08271800
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "8502:8502"
+    command: >
+      sh -c "streamlit run main.py  --server.address 0.0.0.0 --server.port 8502 "

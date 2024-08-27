@@ -13,13 +13,13 @@ st.set_page_config(
 
 def callback():
     cur_t = tz.get_cur_datetime_str()
-    print(f"callback:begin... {cur_t}",flush=True)
+    print(f"callback:begin... {cur_t}", flush=True)
     return cur_t
 
 
-def app(name):
+def app(name: str):
     cur_t = tz.get_cur_datetime_str()
-    print(f"app:cur_time: {cur_t}",flush=True)
+    print(f"app:cur_time: {cur_t}", flush=True)
 
     today = tz.str_to_date(cur_t)
     info = everyday_notice(today)
