@@ -34,6 +34,23 @@ streamlit run main.py
 ```
 
 
+#### docker build 
+
+```commandline
+
+docker build  .  -t  everyday-service:08281600 
+```
+
+
+
+修改docker-compose 中的 image 地址
+```commandline
+# 启动
+docker compose up -d 
+
+```
+
+
 
 #### 参与贡献
 

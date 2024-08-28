@@ -4,7 +4,7 @@ services:
   everyday-service:
     restart: always
     container_name: everyday_service #配置容器名
-    image: everyday-service:08271800
+    image: everyday-service:08281600
     environment:
       - TZ=Asia/Shanghai
     ports:
